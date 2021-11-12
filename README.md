@@ -45,21 +45,21 @@ In order to load a cytoskeleton into the scene, you need an input file located i
 
 - **n_segment** as an integer for every filament. Each vertex belonging to the same filament has the same line number
 - **n_vert** as an integer. Unique for every vertex within the same filament
-- **x-position** as a floating point number 
-- **y-position** as a floating point number
-- **z-position** as a floating point number
-- **density** as a floating point number
+- **(x, y, z)-position** as a floating point number
+- **density** as a floating point number *(TODO: eine fachliche Beschreibung whürde hier passen)*
 - **class identifier**, a number between 1 and 5
-  - **TODO:**
-  - 1 equals color
-  - 2 equals color
-  - 3 equals color
-  - 4 equals color
-  - 5 equals color
+  id|color
+  :--:|--
+  1|<span style="color: turquoise">green</span>
+  2|<span style="color: blue">blue</span>
+  3|<span style="color: red">red</span>
+  4|<span style="color: orange">orange</span>
+  5|<span style="color: lightgray">white</span>
+- **flag** not used here but required by another program
 
-All these values are seperated by tabulators. The values have to be in **exactly this order**. No values can be left out.
+> All these values are seperated by tabulators. The values have to be in **exactly this order**. No values can be left out.
 
-Example:
+**Example**:
 ```
 n_segment	n_vert	x	y	z	density	class	flag
 1	1	10.2	20.34	3.17	1422.89875	1	NaN
@@ -118,18 +118,15 @@ You have the following choices for controlling the scene:
 | 9  | Export Data     |
 | 10 | Assign Class to Filament |
 
-#### Valve Index
+##### Valve Index
 
 ![steam controller schematic][steamschem]
 
-|||
-|----|--------------------------|
-| 1  | __up:__ move forward <br> __down:__ move backward <br> __left:__ move left <br> __right:__ move right |
-| 2  | __up:__ move forward <br> __down:__ move backward <br> __left:__ move left <br> __right:__ move right |
-| 3  | Assign Class to Filament |
-| 4  | __up:__ Cycle Filament Class <br> __down:__ Export Data <br> __left:__ Import Data <br> __right:__ Export Data |
-| 5  | __up:__ Cycle Filament Class <br> __down:__ Export Data <br> __left:__ Import Data <br> __right:__ Export Data |
-| 6  | Assign Class to Filament     |
+|#|description|
+|:--:|--------------------------|
+| 1, 2  | __up:__ move forward <br> __down:__ move backward <br> __left:__ move left <br> __right:__ move right
+| 3, 6  | Assign Class to Filament |
+| 4, 5  | __up:__ Cycle Filament Class <br> __down:__ Export Data <br> __left:__ Import Data <br> __right:__ Export Data |
 
 ##### HP Reverb
 
@@ -138,6 +135,35 @@ You have the following choices for controlling the scene:
 ## Customization
 
 ### Change inputs
+
+The input settings can be changed on a per-device basis under `Edit > Project Settings > Engine > Input`.
+
+![unreal edit menu][ueeditmenu]
+
+To change the input, the dropdown menus can be used. Furter input methods can be added by clicking the plus sign. For each action or axis mapping, the first input method represents mouse and keyboard input while the others are used for the HMDs. 
+
+![project input settings][ueinputsettings]
+
+The action mappings trigger the following events:
+
+action mapping name|event description
+--|--
+Fire|apply filament class
+Action1|cycle filament class
+Action2|stop movement and enable mouse controls
+Action3|export data
+Action4|import data
+--|*TODO: Weitere Actions löschen?*
+
+The axis mappings control the following movements:
+
+axis mapping name|movement description
+--|--
+MoveForward|*Keyboard*: movement parallel to the line of sight<br>*HMD*: movement parallel to the direction to which the right controller is pointing
+MoveRight|movement perpendicular to the vector described above
+TurnRate|turn the viewport left and right (**keyboard only**)
+LookUpRate|turn the viewport up and down (**keyboard only**)
+--|*TODO: Weitere Axen löschen?*
 
 [UE4]: https://www.unrealengine.com/en-US/download/
 [MVS]: https://visualstudio.microsoft.com/de/vs/older-downloads/
@@ -148,7 +174,5 @@ You have the following choices for controlling the scene:
 [steamschem]: documentation/steam-controls.jpg "Steam Controller Schematic"
 [keybschem]: documentation/keyboard-controls.jpg "Keyboard Control Schematic"
 [UEPlay]: documentation/unreal-play.png "Viewport Selection"
-
-
-
-[//]: # In order to make the program load in Unreal Engine, you have to open the Visual Studio solution file (called __zytoskelett2.sln__). After Visual Studio finished loading, go to **Build -> Clean Solution** (in german: **Erstellen -> Projektmappe bereinigen**) located in the menu bar at the top of the screen. After that, build your project (**Build -> Build Solution** from the menu bar, **Erstellen -> Projektmappe erstellen** in german). Once the process finished, you can open the project file __zytoskelett2.uproject__ in the Unreal Engine.
+[ueeditmenu]: documentation/unreal-edit-menu.png "Edit Menu"
+[ueinputsettings]: documentation/unreal-input-settings.png "Input Settings Window"
