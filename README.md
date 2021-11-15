@@ -1,7 +1,6 @@
 # Zytoskelett VR project
 TODOS:
 - Reverb Belegung
-- Weitere Actions/Axis löschen?
 - fachliche beschreibung density
 - VR Screenshots
 - HMD Beschreibung
