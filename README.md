@@ -1,4 +1,12 @@
 # Zytoskelett VR project
+TODOS:
+- Reverb Belegung
+- Weitere Actions/Axis löschen?
+- fachliche beschreibung density
+- VR Screenshots
+- HMD Beschreibung
+- Desktop bedienung fliestext
+
 
 ## Table of Contents
 
@@ -79,6 +87,32 @@ The changed cytoskeleton can be exported into a file of the same format as the i
 The Zytoskelett project comes with an example file, found here: zytoskelett\Content\Data\ex_003_2_UNREAL.dat
 Further Datasets can be found [here][KRNDL].
 
+
+### Viewport (Was im Viewport passiert?) TODO: Screenshots VR; besserer Name; Texte richtig schreiben, sobald highlight drin ist
+
+#### Desktop mode
+
+1. After starting the application in desktop mode, you'll see the following screen 
+2. a ray going out of the Camera. This ray is an indicator for what you're interacting with.
+
+![PC Viewport in Unreal][ueviewportpc]
+
+3. you can load the example file provided with the project by pressing the 4-key by default
+
+4. you can import your own file **[Not in play mode]**
+
+![Import Data Settings][ueidata]
+
+5. flying close enough to a filament (indicated by square at the end of the ray) lets you assign a different class to it.
+
+![Change Filament Class][uechangeclassdesktop]
+
+6. Export by pressing the 3-key
+  - succesfull export indicated by message (Screenshot?)
+
+#### **TODO** HMD mode
+
+
 ## How to control the application ...
 ### ... on PC
 You can select different viewport options by clicking the little arrow on the right side of the __Play__ button.
@@ -130,7 +164,25 @@ You have the following choices for controlling the scene:
 
 ##### HP Reverb
 
+![HP Reverb controller schematic][reverbschem]
 
+|||
+|----|--------------------------|
+| 1  | move forward             |
+| 2  | move backward            |
+| 3  | move left                |
+| 4  | move right               |
+| 5  | Assign Class to Filament |
+| 6  | Import Data     |
+| 7  | Cycle Filament Class |
+| 8  | --              |
+| 9  | Export Data     |
+| 10 | Assign Class to Filament |
+--|*TODO: Knöpfe rausfinden*
+
+> By holding the Y Button [3] you'll activate the movement mode.
+During this you can tilt your left controller up or down to nove parallel to the direction to which the right controller is pointing (The movement here is inverted, tilting up moves you forward and tilting down moves you backwards).
+If you tilt the controller to the side you move perpendicular to the direction to which the right controller is pointing. In other words: tilting the controller to the left side, moves you to the left and tilting it to the right, moves you to the right.
 
 ## Customization
 
@@ -172,7 +224,11 @@ LookUpRate|turn the viewport up and down (**keyboard only**)
 
 [viveschem]: documentation/vive-controls.jpg "Vive Controller Schematic"
 [steamschem]: documentation/steam-controls.jpg "Steam Controller Schematic"
+[reverbschem]: documentation/reverb-controls.jpg "HP Reverb Controller Schematic"
 [keybschem]: documentation/keyboard-controls.jpg "Keyboard Control Schematic"
 [UEPlay]: documentation/unreal-play.png "Viewport Selection"
 [ueeditmenu]: documentation/unreal-edit-menu.png "Edit Menu"
+[ueidata]: documentation/unreal-change-import-data.png "Change import data Menu"
 [ueinputsettings]: documentation/unreal-input-settings.png "Input Settings Window"
+[ueviewportpc]: documentation/unreal-viewport-pc.png "Viewport on PC"
+[uechangeclassdesktop]: documentation/unreal-change-class.png "Change Filament Class Desktop"
