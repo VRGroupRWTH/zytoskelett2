@@ -80,27 +80,30 @@ Further Datasets can be found [here][KRNDL].
 
 ## Running it ...
 ### ... on PC
-You can select different viewport options by clicking the little arrow on the right side of the __Play__ button.
+You can select different viewport options by clicking the little arrow on the right side of the __Play__ button. In order to run the project on desktop, use the option "Selected Viewport" or "New Editor Window".
+
 ![dropdownmenu for viewport selection][UEPlay]
 
 ### ... in VR
 
-*TODO: How to start*
+When running in VR, make sure the HMD is connected and correctly set up. Then click "VR Preview" and use the project on the HMD.
+
+![Dropdown menu with VR Preview selected][ueplayhmd]
 
 ## Controls
 ### Desktop
 
 ![keyboard control scheme][keybschem]
 
-*TODO: Tabelle*
-
-- W, A, S, D move through the scene
-- The arrow keys rotate the scene
-- Left clicking while having a filament selected changes its class to the currently selected one
-- Action Button 4 starts importing the chosen file an creating a cytoskeleton in the scene
-- Action Button 3 starts exporting an existing cytoskeleton into an output file
-- Action Button 1 cycles the currently selected class between 1 and 5
-- Action Button 2 stops the VR-Pawn movement and enables the mouse cursor. The filament under the mouse cursor will change its class when left clicking
+|#|description
+|--|--|
+|W, A, S, D|move through the scene|
+|arrow keys|rotate the view|
+|left mouse button|change the class of the selected segment
+|number key 1|cycles the currently selected class from 1 through 5
+|number key 2|stops the VR-Pawn movement and enables the mouse cursor. The filament under the mouse cursor will change its class when left clicking
+|number key 3|starts exporting an existing cytoskeleton into an output file
+|number key 4|starts importing the chosen file an creating a cytoskeleton in the scene
 
 ### HTC Vive
 
@@ -192,6 +195,7 @@ LookUpRate|turn the viewport up and down (**keyboard only**)
 [reverbschem]: documentation/reverb-controls.jpg "HP Reverb Controller Schematic"
 [keybschem]: documentation/keyboard-controls.jpg "Keyboard Control Schematic"
 [UEPlay]: documentation/unreal-play.png "Viewport Selection"
+[ueplayhmd]: documentation/unreal-play-hmd.png "Select VR Viewport"
 [ueeditmenu]: documentation/unreal-edit-menu.png "Edit Menu"
 [ueidata]: documentation/unreal-change-import-data.png "Change import data Menu"
 [ueinputsettings]: documentation/unreal-input-settings.png "Input Settings Window"
