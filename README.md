@@ -1,11 +1,4 @@
 # Zytoskelett VR project
-TODOS:
-- Reverb Belegung
-- fachliche beschreibung density
-- VR Screenshots
-- HMD Beschreibung
-- Desktop bedienung fliestext
-
 
 ## Table of Contents
 
@@ -37,7 +30,7 @@ it was created in cooperation with Prof. Dr. rer. nat. Reinhard Windoffer from t
     
 > Please note that versions of Unreal Engine greater than 4.22 and Visual Studio 2017 **do not currently work**. 
 
-### How to run Zytoskelett
+### Cloning the project
 
 First you have to clone this repository with the following command: 
 ```bash
@@ -50,11 +43,11 @@ In order to start the Project, navigate to the root directory and double-click t
 ### Importing Data
 In order to load a cytoskeleton into the scene, you need an input file located in the subfolder **Content/Data**, relative to the project's root directory. If it doesn't exist, create it yourself. You will need one line for each vertex of your cell. Each line has to contain the following values:
 
-- **n_segment** as an integer for every filament. Each vertex belonging to the same filament has the same line number
-- **n_vert** as an integer. Unique for every vertex within the same filament
-- **(x, y, z)-position** as a floating point number
-- **density** as a floating point number *(TODO: eine fachliche Beschreibung whürde hier passen)*
-- **class identifier**, a number between 1 and 5
+- **n_segment** as an integer for every filament. Each vertex belonging to the same filament has the same line number.
+- **n_vert** as an integer. Unique for every vertex within the same filament.
+- **(x, y, z)-position** as a floating point number.
+- **density** as a floating point number. Describes the thickness of the segment.
+- **class identifier**, a number between 1 and 5.
   id|color
   :--:|--
   1|<span style="color: turquoise">green</span>
@@ -75,54 +68,33 @@ n_segment	n_vert	x	y	z	density	class	flag
 2	2	10.62	20.81	3.56	1964.99	1	NaN
 ```
 
-#### Changing the input files' name
-
 To change the name of the file to import, load your project in the Unreal Engine Editor and select the __Zytoskelett Data__ Actor from the scene browser on the right. In the properties window below, choose **Filename** in the Menu **Zytoskelett - Eingabe** and change the name to your data files name including the file extension (e.g. .dat). Also, an actor is created in the subfolder __Content/Data__ for easy reuse.
+![Import Data Settings][ueidata]
 
 ### Exporting Data
 The changed cytoskeleton can be exported into a file of the same format as the input file. It will have an __\_exported__ added to its input file name. The only value that will be changed is the class, so when importing that file the next time your filaments will keep their assigned class.
 
 ### Data examples
-The Zytoskelett project comes with an example file, found here: zytoskelett\Content\Data\ex_003_2_UNREAL.dat
+The Zytoskelett project comes with an example file, found here: `zytoskelett\Content\Data\ex_003_2_UNREAL.dat`<br>
 Further Datasets can be found [here][KRNDL].
 
-
-### Viewport (Was im Viewport passiert?) TODO: Screenshots VR; besserer Name; Texte richtig schreiben, sobald highlight drin ist
-
-#### Desktop mode
-
-1. After starting the application in desktop mode, you'll see the following screen 
-2. a ray going out of the Camera. This ray is an indicator for what you're interacting with.
-
-![PC Viewport in Unreal][ueviewportpc]
-
-3. you can load the example file provided with the project by pressing the 4-key by default
-
-4. you can import your own file **[Not in play mode]**
-
-![Import Data Settings][ueidata]
-
-5. flying close enough to a filament (indicated by square at the end of the ray) lets you assign a different class to it.
-
-![Change Filament Class][uechangeclassdesktop]
-
-6. Export by pressing the 3-key
-  - succesfull export indicated by message (Screenshot?)
-
-#### **TODO** HMD mode
-
-
-## How to control the application ...
+## Running it ...
 ### ... on PC
 You can select different viewport options by clicking the little arrow on the right side of the __Play__ button.
 ![dropdownmenu for viewport selection][UEPlay]
 
-#### Controls
-You have the following choices for controlling the scene:
+### ... in VR
+
+*TODO: How to start*
+
+## Controls
+### Desktop
 
 ![keyboard control scheme][keybschem]
 
-- W,A,S,D move through the scene
+*TODO: Tabelle*
+
+- W, A, S, D move through the scene
 - The arrow keys rotate the scene
 - Left clicking while having a filament selected changes its class to the currently selected one
 - Action Button 4 starts importing the chosen file an creating a cytoskeleton in the scene
@@ -130,15 +102,11 @@ You have the following choices for controlling the scene:
 - Action Button 1 cycles the currently selected class between 1 and 5
 - Action Button 2 stops the VR-Pawn movement and enables the mouse cursor. The filament under the mouse cursor will change its class when left clicking
 
-### ... in VR
-
-#### Controls
-
-##### HTC Vive
+### HTC Vive
 
 ![vive controller schematic][viveschem]
 
-|||
+|#|description|
 |----|--------------------------|
 | 1  | move forward             |
 | 2  | move backward            |
@@ -151,7 +119,7 @@ You have the following choices for controlling the scene:
 | 9  | Export Data     |
 | 10 | Assign Class to Filament |
 
-##### Valve Index
+### Valve Index
 
 ![steam controller schematic][steamschem]
 
@@ -161,27 +129,27 @@ You have the following choices for controlling the scene:
 | 3, 6  | Assign Class to Filament |
 | 4, 5  | __up:__ Cycle Filament Class <br> __down:__ Export Data <br> __left:__ Import Data <br> __right:__ Export Data |
 
-##### HP Reverb
+### HP Reverb
 
-![HP Reverb controller schematic][reverbschem]
+**currently not supported**
 
-|||
-|----|--------------------------|
-| 1  | move forward             |
-| 2  | move backward            |
-| 3  | move left                |
-| 4  | move right               |
-| 5  | Assign Class to Filament |
-| 6  | Import Data     |
-| 7  | Cycle Filament Class |
-| 8  | --              |
-| 9  | Export Data     |
-| 10 | Assign Class to Filament |
---|*TODO: Knöpfe rausfinden*
+## Findig your way around
 
-> By holding the Y Button [3] you'll activate the movement mode.
-During this you can tilt your left controller up or down to nove parallel to the direction to which the right controller is pointing (The movement here is inverted, tilting up moves you forward and tilting down moves you backwards).
-If you tilt the controller to the side you move perpendicular to the direction to which the right controller is pointing. In other words: tilting the controller to the left side, moves you to the left and tilting it to the right, moves you to the right.
+1. After starting the project, you'll see the following screen 
+![PC Viewport in Unreal][ueviewportpc]
+
+1. In the top right corner, a window that shows the numbers of the segment and vertex currently pointed at, and which class is assigned to it. In VR, the window is not shown.
+
+1. A ray is coming out of the camera (or the right controller, when in VR). This points at the segment you are interacting with.
+![HMD Viewport in Unreal][ueviewporthmd]
+
+1. The data file (example is provided) can be loaded by pressing the import key (key map see below).
+
+1. Flying close enough to a filament (indicated by square at the end of the ray) lets you assign a different class to it.
+![Change Filament Class on Desktop][uechangeclassdesktop]
+![Change Filament Class in VR][uechangeclasshmd]
+
+1. Export the annotated data by pressing the export key. The successful export is indicated by a message in the top left corner of the screen.
 
 ## Customization
 
@@ -204,7 +172,6 @@ Action1|cycle filament class
 Action2|stop movement and enable mouse controls
 Action3|export data
 Action4|import data
---|*TODO: Weitere Actions löschen?*
 
 The axis mappings control the following movements:
 
@@ -214,7 +181,6 @@ MoveForward|*Keyboard*: movement parallel to the line of sight<br>*HMD*: movemen
 MoveRight|movement perpendicular to the vector described above
 TurnRate|turn the viewport left and right (**keyboard only**)
 LookUpRate|turn the viewport up and down (**keyboard only**)
---|*TODO: Weitere Axen löschen?*
 
 [UE4]: https://www.unrealengine.com/en-US/download/
 [MVS]: https://visualstudio.microsoft.com/de/vs/older-downloads/
@@ -230,4 +196,6 @@ LookUpRate|turn the viewport up and down (**keyboard only**)
 [ueidata]: documentation/unreal-change-import-data.png "Change import data Menu"
 [ueinputsettings]: documentation/unreal-input-settings.png "Input Settings Window"
 [ueviewportpc]: documentation/unreal-viewport-pc.png "Viewport on PC"
+[ueviewporthmd]: documentation/unreal-viewport-hmd.jpg "Viewport on HMD"
 [uechangeclassdesktop]: documentation/unreal-change-class.png "Change Filament Class Desktop"
+[uechangeclasshmd]: documentation/unreal-change-class-hmd.jpg "Change Filament Class on HMD"
