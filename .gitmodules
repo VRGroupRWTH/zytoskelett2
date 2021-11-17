@@ -1,0 +1,16 @@
+[submodule "Plugins/NDisplayLaunchButton"]
+	path = Plugins/NDisplayLaunchButton
+	url = https://devhub.vr.rwth-aachen.de/VR-Group/unreal-development/NDisplayLaunchButton.git
+	branch = master
+[submodule "Plugins/WidgetInteraction"]
+	path = Plugins/WidgetInteraction
+	url = https://devhub.vr.rwth-aachen.de/VR-Group/unreal-development/widgetinteraction.git
+	branch = master
+[submodule "Plugins/CaveOverlay"]
+	path = Plugins/CaveOverlay
+	url = https://devhub.vr.rwth-aachen.de/VR-Group/unreal-development/unreal-cave-overlay.git
+	branch = master
+[submodule "Plugins/nDisplayExtensions"]
+	path = Plugins/nDisplayExtensions
+	url = https://devhub.vr.rwth-aachen.de/VR-Group/unreal-development/ndisplayextensions.git
+	branch = master
